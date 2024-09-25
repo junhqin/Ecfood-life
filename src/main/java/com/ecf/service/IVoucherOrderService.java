@@ -1,5 +1,6 @@
 package com.ecf.service;
 
+import com.ecf.dto.Result;
 import com.ecf.entity.VoucherOrder;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -12,5 +13,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2021-12-22
  */
 public interface IVoucherOrderService extends IService<VoucherOrder> {
-
+    Result createVoucherOrder(Long voucherId);
+    Result seckillVoucher(Long voucherId);
 }

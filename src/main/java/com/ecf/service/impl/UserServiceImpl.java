@@ -11,6 +11,7 @@ import com.ecf.entity.User;
 import com.ecf.mapper.UserMapper;
 import com.ecf.service.IUserService;
 import com.ecf.utils.RegexUtils;
+import com.mzt.logapi.starter.annotation.LogRecord;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
@@ -94,7 +95,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         //8.返回token
         return Result.ok(token);
     }
-
+    @LogRecord(success = "成功创建账户", type = "1", bizNo = "2")
     private User createUserWithPhone(String phone) {
         User user = new User();
         user.setPhone(phone);

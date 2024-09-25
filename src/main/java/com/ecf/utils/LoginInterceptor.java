@@ -1,10 +1,11 @@
 package com.ecf.utils;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+@Slf4j
 public class LoginInterceptor implements HandlerInterceptor {
 
     @Override
@@ -13,6 +14,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         if (UserHolder.getUser() == null) {
             // 没有，需要拦截，设置状态码
             response.setStatus(401);
+            log.info("用户未登录，拦截请求：{}", request.getRequestURI());
             // 拦截
             return false;
         }
